@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+					var lugar = "Univalle";
+					$.getJSON( "/assets/data/datos originales.json", function( data ) {
+					  var items = [];
+					  $.each( data, function( key, val ) {
+					  	item = {}
+					  	var fecha = val.Fecha.split('/');
+			        item ["fecha"] = fecha[2]+"-"+fecha[1]+"-"+fecha[0]+"T00:00:00.000Z";
+			        item ["lugar"] = lugar
+			        item ["ica"] = val[lugar];
+			        item ["color"] = queColor(val[lugar]);
+					    items.push(item);
+					  });
+					  $('body').html(JSON.stringify(items));
+					});
+
+					function queColor(valor){
+						if(valor < 0){
+							return "blanco";
+						}
+						if(0 <= valor <= 50){
+							return "verde";
+						}
+						if(51 <= valor <= 100){
+							return "amarillo";
+						}
+						if(101 <= valor <= 150){
+							return "naranja";
+						}
+						if(151 <= valor <= 200){
+							return "rojo";
+						}
+						if(201 <= valor <= 300){
+							return "púrpura";
+						}
+						return "marrón";
+					}
+		</script>
+	</body>
+</html>

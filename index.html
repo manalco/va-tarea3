@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Tarea 3 | Visual Analytics</title>
+	<script type="text/javascript" src="/libraries/d3/d3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/scripts.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega@4.2.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc6"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-embed@3.19.2"></script>
+
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+	<div class="container"></div>
+	<script type="text/javascript">
+		var body = d3.select(".container");
+		const datos = d3.json("/assets/data/datos.json");
+
+		//console.log(datos);
+
+		body.append("h1").text("Índice de Calidad del Aire (ICA) de Santiago de Cali 2010 a 2018");
+		body.append("p").html('A partir del 2018 la metodología de calculo del Indice de Calidad del Aire cambió según la Resolución 2254 de 2017 del ministerio de Ambiente y Desarrollo Sostenible, la cual puede ser consultada [<a href="http://www.minambiente.gov.co/images/normativa/app/resoluciones/96-res%202254%20de%202017.pdf" target="_blank">aquí</a>]. Por ende, los datos anteriores al 2018 están calculados bajo la metodología determinada por la Resolución 610 del 2010 y el manual de operación del sistema de calidad del aire y los datos posteriores al 2018 por la Resolución 2254 del 2017.');
+		body.append("p").html('El ICA permite clasificar la calidad de aire según los niveles de concentdación de los contaminantes atmosféricos. La clasificación de la calidad del aire se hace por medio de una escala numérica, a la cual se le asigna un color y se relaciona con los efectos de la contaminación atmosférica en la salud humana [Tabla No. 5]. El ICA involucra cinco contaminantes criterios los cuales son: Ozono, Material Particulado, Dióxido de Azufre, Dióxido de Nitdógeno y Monóxido de Carbono (MAVDT, 2010).');
+		body.append("table").attr("id","table5").html('<thead><td width="75">Rango</td><td width="75">Color</td><td width="155">Estado de la calidad del aire</td><td>Efectos</td></thead><tbody></tbody>');
+		d3.select("#table5 tbody").append("tr").html('<td>0-50</td><td>Verde</td><td>Buena</td><td>La contaminación atmosférica supone un riesgo bajo para la salud.</td>');
+		d3.select("#table5 tbody").append("tr").html('<td>51-100</td><td>Amarillo</td><td>Aceptable</td><td>Posibles síntomas respiratorios en grupos poblacionales sensibles.</td>');
+		d3.select("#table5 tbody").append("tr").html('<td>101-150</td><td>Naranja</td><td>Dañina a la salud de grupos sensibles</td><td>Los grupos poblacionales sensibles pueden presentar efectos sobre la salud: <ol><li><b>Ozono troposférico:</b> Las personas con enfermedades pulmonares, niños, adultos mayores y las que constantemente realizan actividad al aire libre, deben reducir su exposición a los contaminantes del aire.</li><li><b>Material particulado:</b> Las personas con enfermedad cardíaca o pulmonar, los adultos mayores y los niños se consideran sensibles y por lo tanto en mayor riesgo.</li></ol></td>');
+		d3.select("#table5 tbody").append("tr").html('<td>151-200</td><td>Rojo</td><td>Dañina para la salud</td><td>Todos los individuos pueden comenzar a experimentar efectos sobre la salud. Los grupos sensibles pueden presentar efectos más graves.</td>');
+		d3.select("#table5 tbody").append("tr").html('<td>201-300</td><td>Púrpura</td><td>Muy dañina para la salud</td><td>Estado de alerta que significa que todos pueden presentar efectos graves para la salud.</td>');
+		d3.select("#table5 tbody").append("tr").html('<td>301-500</td><td>Marrón</td><td>Peligroso</td><td>Advertencia sanitaria. Toda la población puede presentar efectos adversos graves en la salud humana.</td>');
+		body.append("p").html('<small><b>Nota 1:</b>El grupo de calidad del aire mediante el Sistema de Vigilancia de Calidad del Aire de Santiago de Cali (SVCASC) monitorea de los contaminantes criterios, realizando el cálculo de los ICA por medio de profesionales cualificados y software especializado en el tema siguiendo los lineamientos del Minambiente e IDEAM. La base de datos cargada presenta valores faltantes debido a los problemas normales que afrontan toda red de monitoreo, como fallas en los equipos de monitoreo, falla de energía eléctdica, hurto a cableado y mantenimiento de equipos. Además, se resalta que desde el año 2010 a la fecha el DAGMA ha fortalecido su sistema de vigilancia, aumentando el número de estaciones y de equipos de monitoreo.</small>');
+		body.append("p").html('<small><b>Nota 2:</b>Para conocer más sobre la temática, se invita a la comunidad interesada a consultar los boletines de calidad del aire, los cuales se encuentdan cargados en el portal del DAGMA, sección grupo de Calidad del Aire [<a href="http://www.cali.gov.co/dagma/publicaciones/sistema_de_vigilancia_de_calidad_del_aire_de_cali_svcac_pub" target="_blank">aquí</a>].</small>');
+		body.append("p").html('<small class="light"><b>Fuente:</b> <a href="https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Indice-de-calidad-del-aire-ICA-de-Santiago-de-Cali/fci7-y95i" target="_blank">https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Indice-de-calidad-del-aire-ICA-de-Santiago-de-Cali/fci7-y95i</a></small>');
+
+		body.append("div").attr("class", "separator clearfix").html("&nbsp;");
+		body.append("h2").text("Histórico del ICA por lugar");
+		body.append("div")
+			.attr("id", "todos")
+			.attr("class", "vis");
+		//Begin vis code
+		var ica = {
+		  "data": {"url": "/assets/data/datos.json"},
+		  "width": 650, "height": 200,
+		  "mark": "area",
+		  "encoding": {
+		    "x": {
+		      "timeUnit": "yearmonth",
+		      "field": "fecha",
+		      "type": "temporal",
+		      "axis": {"domain": true, "format": "%Y"}
+		    },
+		    "y": {
+		      "aggregate": "sum",
+		      "field": "ica",
+		      "type": "quantitative",
+		      "axis": null,
+		      "stack": "center"
+		    },
+		    "color": {"field":"lugar", "type":"nominal"}
+		  }
+		}
+		//End vis code
+		vegaEmbed("#todos", ica);
+
+		body.append("hr");
+		body.append("p").html("Descripción de la tarea");
+	</script>
+</body>
+</html> 
