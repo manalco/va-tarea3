@@ -19,8 +19,9 @@
 
 		//console.log(datos);
 
-		body.append("h1").text("Índice de Calidad del Aire (ICA) de Santiago de Cali 2010 a 2018");
-		body.append("p").html('A partir del 2018 la metodología de calculo del Indice de Calidad del Aire cambió según la Resolución 2254 de 2017 del ministerio de Ambiente y Desarrollo Sostenible, la cual puede ser consultada [<a href="http://www.minambiente.gov.co/images/normativa/app/resoluciones/96-res%202254%20de%202017.pdf" target="_blank">aquí</a>]. Por ende, los datos anteriores al 2018 están calculados bajo la metodología determinada por la Resolución 610 del 2010 y el manual de operación del sistema de calidad del aire y los datos posteriores al 2018 por la Resolución 2254 del 2017.');
+		body.append("h1").text("Los Caleños Pueden Respirar Tranquilos");
+		body.append("p").html("<b>Índice de Calidad del Aire (ICA) de Santiago de Cali 2010 a 2018</b>");
+		body.append("p").html('A partir del 2018 la metodología de calculo del Indice de Calidad del Aire cambió según la Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible, la cual puede ser consultada [<a href="http://www.minambiente.gov.co/images/normativa/app/resoluciones/96-res%202254%20de%202017.pdf" target="_blank">aquí</a>]. Por ende, los datos anteriores al 2018 están calculados bajo la metodología determinada por la Resolución 610 del 2010 y el manual de operación del sistema de calidad del aire y los datos posteriores al 2018 por la Resolución 2254 del 2017.');
 		body.append("p").html('El ICA permite clasificar la calidad de aire según los niveles de concentdación de los contaminantes atmosféricos. La clasificación de la calidad del aire se hace por medio de una escala numérica, a la cual se le asigna un color y se relaciona con los efectos de la contaminación atmosférica en la salud humana [Tabla No. 5 de la Resolución 2254 de 2017]. El ICA involucra cinco contaminantes criterios los cuales son: Ozono, Material Particulado, Dióxido de Azufre, Dióxido de Nitdógeno y Monóxido de Carbono (MAVDT, 2010).');
 		body.append("table").attr("id","table5").html('<thead><td width="75">Rango</td><td width="75">Color</td><td width="155">Estado de la calidad del aire</td><td>Efectos</td></thead><tbody></tbody>');
 		d3.select("#table5 tbody").append("tr").html('<td>0-50</td><td>Verde</td><td>Buena</td><td>La contaminación atmosférica supone un riesgo bajo para la salud.</td>');
@@ -37,6 +38,7 @@
 		body.append("p").html('<small><b>Nota 2:</b>Para conocer más sobre la temática, se invita a la comunidad interesada a consultar los boletines de calidad del aire, los cuales se encuentdan cargados en el portal del DAGMA, sección grupo de Calidad del Aire [<a href="http://www.cali.gov.co/dagma/publicaciones/sistema_de_vigilancia_de_calidad_del_aire_de_cali_svcac_pub" target="_blank">aquí</a>].</small>');
 		body.append("p").html('<small><b>Nota 3:</b>Para la presente visualización se creó un nuevo color (blanco) de la Tabla No. 5 con el ánimo de poder representar aquellos datos sin mediciones.</small>');
 		body.append("p").html('<small class="light"><b>Fuente:</b> <a href="https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Indice-de-calidad-del-aire-ICA-de-Santiago-de-Cali/fci7-y95i" target="_blank">https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Indice-de-calidad-del-aire-ICA-de-Santiago-de-Cali/fci7-y95i</a></small>');
+		body.append("p").html('<small class="light"><b>Fuente:</b> <a href="http://www.cali.gov.co/dagma/publicaciones/38365/sistema_de_vigilancia_de_calidad_del_aire_de_cali_svcac/" target="_blank">http://www.cali.gov.co/dagma/publicaciones/38365/sistema_de_vigilancia_de_calidad_del_aire_de_cali_svcac/</a></small>');
 
 		body.append("div")
 			.attr("class", "separator clearfix")
@@ -51,20 +53,8 @@
 			.attr("value", "all")
 			.text("Por Estaciones");
 		selectLugar.append("option")
-			.attr("value", "Base Aérea")
-			.text("Base Aérea");
-		selectLugar.append("option")
-			.attr("value", "Cañaveralejo")
-			.text("Cañaveralejo");
-		selectLugar.append("option")
-			.attr("value", "Compartir")
-			.text("Compartir");
-		selectLugar.append("option")
 			.attr("value", "ERA - Obrero")
 			.text("ERA - Obrero");
-		selectLugar.append("option")
-			.attr("value", "La Ermita")
-			.text("La Ermita");
 		selectLugar.append("option")
 			.attr("value", "La Flora")
 			.text("La Flora");
@@ -72,11 +62,23 @@
 			.attr("value", "Pance")
 			.text("Pance");
 		selectLugar.append("option")
-			.attr("value", "Transitoria")
-			.text("Transitoria");
-		selectLugar.append("option")
 			.attr("value", "Univalle")
 			.text("Univalle");
+		selectLugar.append("option")
+			.attr("value", "Base Aérea")
+			.text("Base Aérea");
+		selectLugar.append("option")
+			.attr("value", "La Ermita")
+			.text("La Ermita");
+		selectLugar.append("option")
+			.attr("value", "Compartir")
+			.text("Compartir");
+		selectLugar.append("option")
+			.attr("value", "Cañaveralejo")
+			.text("Cañaveralejo");
+		selectLugar.append("option")
+			.attr("value", "Transitoria")
+			.text("Transitoria");
 		selectLugar.append("option")
 			.attr("value", "general")
 			.text("General");
@@ -220,6 +222,17 @@
 		vegaEmbed("#vis", ica);
 		//End vis code
 
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+
+		body.append("h2").text("Ubicación de las Estaciones de medición");
+		body.append("img")
+			.attr("width",650)
+			.attr("src", "assets/img/estaciones.jpg")
+			.style("margin", "auto")
+			.style("display", "block");
+
 		
 		body.append("div")
 			.attr("class", "separator clearfix")
@@ -228,6 +241,21 @@
 		body.append("div")
 			.attr("class", "separator clearfix")
 			.html("&nbsp;");
+
+		body.append("h2").text("Análisis");
+		body.append("p").html("En primer lugar es posible establecer cronológicamente cuándo comenzaron a operar las estaciones de medición del ICA en Santiado de Cali; las dos primeras estaciones fueron <i>ERA - Obrero</i> y <i>La Flora</i> que comenzaron a operar en 2010, seguidas por <i>Pance</i>, <i>Univalle</i>, <i>Base Aérea</i>, <i>La Ermita</i> en 2013, <i>Compartir</i> y <i>Cañaveralejo</i> en 2014 y <i>Transitoria</i> en 2015.");
+		body.append("p").html("También es posible establecer que hay tres puntos en la ciudad con un aumento significativo en el ICA en los últimos años y son <i>ERA - Obrero</i>, <i>Univalle</i> y <i>Base Aérea</i>. De estas estaciones de medición puede ser lógico el aumento en la Base Aérea Marco Fidel Suárez debido a la operación de diferentes vehículos militares tanto aéreos como terrestres.");
+		body.append("p").html("Por otro lado, se puede establecer que en las locaciones de <i>La Flora</i>, <i>Pance</i> y <i>Cañaveralejo</i> las mediciones del ICA son muy buenas.");
+		body.append("p").html("En general en la ciudad de Santiago de Cali el ICA muestra un comportamiento ascendente pero se mantiene en los rangos bueno y aceptable. De continuar con esta tendencia es posible que en unos años se hagan necesarias medidas de control para mantener el ICA dentro de los límites saludables para las personas.");
+
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+		body.append("hr");
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+
 		body.append("p").html('<small>Este contenido es publicado bajo la licencia MIT. Realizado por <a href="http://www.manalco.co" target="_blank">Manuel Alvarado</a> 2018.<br/>Código fuente disponible en <a href="https://github.com/cubosensei/va-tarea3" target="_blank">https://github.com/cubosensei/va-tarea3</a></small>').style("text-align", "center");
 	</script>
 </body>
