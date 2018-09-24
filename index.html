@@ -49,7 +49,7 @@
 		var selectLugar = d3.select("#selectLugar");
 		selectLugar.append("option")
 			.attr("value", "all")
-			.text("Por bases");
+			.text("Por Estaciones");
 		selectLugar.append("option")
 			.attr("value", "Base Aérea")
 			.text("Base Aérea");
@@ -85,6 +85,7 @@
 		body.append("div")
 			.attr("id", "vis")
 			.attr("class", "vis");
+
 		//Begin vis code
 		var ica = {
 		  "data": {"url": "assets/data/datos.json"},
@@ -217,9 +218,17 @@
 			vegaEmbed("#vis", ica);
 		});
 		vegaEmbed("#vis", ica);
+		//End vis code
 
+		
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
 		body.append("hr");
-		body.append("p").html("Descripción de la tarea");
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+		body.append("p").html('<small>Este contenido es publicado bajo la licencia MIT. Realizado por <a href="http://www.manalco.co" target="_blank">Manuel Alvarado</a> 2018.<br/>Código fuente disponible en <a href="https://github.com/cubosensei/va-tarea3" target="_blank">https://github.com/cubosensei/va-tarea3</a></small>').style("text-align", "center");
 	</script>
 </body>
 </html> 
