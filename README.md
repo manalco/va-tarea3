@@ -25,6 +25,9 @@ Para la ejecución local basta con usar un servidor web como Apache y dirigir un
 
 
 ## Créditos
-Este contenido es publicado bajo la licencia MIT. Realizado por [Manuel Alvarado](http://www.manalco.co)
+* Este contenido es publicado bajo la licencia MIT. Realizado por [Manuel Alvarado](http://www.manalco.co).
+* Datos por [Departamento Administrativo de Gestión de Medio Ambiente](http://www.cali.gov.co/dagma) de la Alcaldía Municipal de Santiago de Cali publicados en https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Indice-de-calidad-del-aire-ICA-de-Santiago-de-Cali/fci7-y95i
+
+---
 
 Visualización disponible en https://cubosensei.github.io/va-tarea3
