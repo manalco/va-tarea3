@@ -62,6 +62,14 @@ body{
 .clearfix { display: block; }
 /* close commented backslash hack */
 
+.vega-actions{
+	text-align: center;
+
+	a{
+		margin: 2px 5px;
+	}
+}
+
 @media (min-width: 576px){
 	.container{
 		max-width: 540px;

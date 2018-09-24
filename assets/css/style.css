@@ -50,6 +50,11 @@ body {
   display: block; }
 
 /* close commented backslash hack */
+.vega-actions {
+  text-align: center; }
+  .vega-actions a {
+    margin: 2px 5px; }
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px; } }
