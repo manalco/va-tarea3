@@ -6,18 +6,20 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-					var lugar = "Univalle";
+					var lugares = ["Base Aerea","Cañaveralejo","Compartir","ERA - Obrero","La Ermita","La Flora","Pance","Transitoria","Univalle"];
 					$.getJSON( "/assets/data/datos originales.json", function( data ) {
 					  var items = [];
-					  $.each( data, function( key, val ) {
-					  	item = {}
-					  	var fecha = val.Fecha.split('/');
-			        item ["fecha"] = fecha[2]+"-"+fecha[1]+"-"+fecha[0]+"T00:00:00.000Z";
-			        item ["lugar"] = lugar
-			        item ["ica"] = val[lugar];
-			        item ["color"] = queColor(val[lugar]);
-					    items.push(item);
-					  });
+					  for (var i = 0; i < lugares.length; i++) {
+		  			  $.each( data, function( key, val ) {
+		  			  	item = {}
+		  			  	var fecha = val.Fecha.split('/');
+		  	        item ["fecha"] = fecha[2]+"-"+fecha[1]+"-"+fecha[0]+"T00:00:00.000Z";
+		  	        item ["lugar"] = lugares[i]
+		  	        item ["ica"] = val[lugares[i]];
+		  	        item ["color"] = queColor(val[lugares[i]]);
+		  			    items.push(item);
+		  			  });
+					  }
 					  $('body').html(JSON.stringify(items));
 					});
 
@@ -25,19 +27,19 @@
 						if(valor < 0){
 							return "blanco";
 						}
-						if(0 <= valor <= 50){
+						if(0 <= valor && valor <= 50){
 							return "verde";
 						}
-						if(51 <= valor <= 100){
+						if(51 <= valor && valor <= 100){
 							return "amarillo";
 						}
-						if(101 <= valor <= 150){
+						if(101 <= valor && valor <= 150){
 							return "naranja";
 						}
-						if(151 <= valor <= 200){
+						if(151 <= valor && valor <= 200){
 							return "rojo";
 						}
-						if(201 <= valor <= 300){
+						if(201 <= valor && valor <= 300){
 							return "púrpura";
 						}
 						return "marrón";
