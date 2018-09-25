@@ -261,6 +261,20 @@
 			.attr("class", "separator clearfix")
 			.html("&nbsp;");
 
+		body.append("h2").text("What - Why - How");
+		body.append("p").html("<b>What</b><br/>Items: Mediciones.<br/>Attributes:<br/><ol><li>Fecha (Temporal)</li><li>Lugar (categorical)</li><li>ICA (Ordered, quantitative, sequential)</li><li>Color (Ordered, ordinal)</li></ol>");
+		body.append("p").html("<b>Why</b><ul><li>Identificar tendencias en el comportamiento del ICA en la ciudad de Cali (Identify, Trends).</li><li>Identificar anomalías en el ICA de la ciudad de Cali (Identify, Outliers).</li><li>Resumir el comportamiento del ICA en la ciudad de Cali desde 2010 hasta 2018 (Summarize, Features).</li></ul>");
+		body.append("p").html("<b>How</b><br/>Para <i>Histórico del ICA por lugar:</i><br/>Mark: Area.<br/>Channels:<ul><li>[1, 3] Size.</li><li>[2] Color (saturation).</li></ul>");
+		body.append("p").html("Para las demás gráficas:</i><br/>Mark: Area.<br/>Channels:<ul><li>[1, 3] Size.</li><li>[4] Color (hue).</li></ul>");
+
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+		body.append("hr");
+		body.append("div")
+			.attr("class", "separator clearfix")
+			.html("&nbsp;");
+
 		body.append("p").html('<small>Este contenido es publicado bajo la licencia MIT. Realizado por <a href="http://www.manalco.co" target="_blank">Manuel Alvarado</a> 2018.<br/>Código fuente disponible en <a href="https://github.com/cubosensei/va-tarea3" target="_blank">https://github.com/cubosensei/va-tarea3</a></small>').style("text-align", "center");
 	</script>
 </body>
