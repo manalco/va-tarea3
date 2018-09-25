@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i");
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  margin-top: 0px; }
   body .container {
     width: 100%;
     padding-right: 15px;
@@ -54,6 +55,12 @@ body {
   text-align: center; }
   .vega-actions a {
     margin: 2px 5px; }
+
+#hero {
+  width: 100%;
+  max-width: 1140px;
+  margin: auto;
+  display: block; }
 
 @media (min-width: 576px) {
   .container {

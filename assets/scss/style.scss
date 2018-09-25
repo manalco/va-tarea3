@@ -4,6 +4,7 @@
 //STYLES
 body{
 	font-family: 'Roboto', sans-serif;
+	margin-top: 0px;
 
 	.container{
 		width: 100%;
@@ -68,6 +69,13 @@ body{
 	a{
 		margin: 2px 5px;
 	}
+}
+
+#hero{
+	width: 100%;
+	max-width: 1140px;
+	margin: auto;
+	display: block;
 }
 
 @media (min-width: 576px){

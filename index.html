@@ -19,6 +19,10 @@
 
 		//console.log(datos);
 
+		body.append("img")
+			.attr("id", "hero")
+			.attr("src", "assets/img/hero.jpg");
+
 		body.append("h1").text("Los Caleños Pueden Respirar Tranquilos");
 		body.append("p").html("<b>Índice de Calidad del Aire (ICA) de Santiago de Cali 2010 a 2018</b>");
 		body.append("p").html('A partir del 2018 la metodología de calculo del Indice de Calidad del Aire cambió según la Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible, la cual puede ser consultada [<a href="http://www.minambiente.gov.co/images/normativa/app/resoluciones/96-res%202254%20de%202017.pdf" target="_blank">aquí</a>]. Por ende, los datos anteriores al 2018 están calculados bajo la metodología determinada por la Resolución 610 del 2010 y el manual de operación del sistema de calidad del aire y los datos posteriores al 2018 por la Resolución 2254 del 2017.');
@@ -171,7 +175,7 @@
 					    },
 					    "color": {
 					    	"field":"color", 
-					    	"type":"nominal",
+					    	"type":"ordinal",
 					    	"scale": {
 					    		"domain": ["blanco", "verde", "amarillo", "naranja", "rojo", "púrpura", "marrón"],
 					    		"range": ["white", "#00bc9d", "#f2c342", "#eb7d37", "#ed4a42", "#9345a7", "#5d5633"]
@@ -202,7 +206,7 @@
 						    },
 						    "color": {
 						    	"field":"color", 
-						    	"type":"nominal",
+						    	"type":"ordinal",
 						    	"scale": {
 						    		"domain": ["blanco", "verde", "amarillo", "naranja", "rojo", "púrpura", "marrón"],
 						    		"range": ["white", "#00bc9d", "#f2c342", "#eb7d37", "#ed4a42", "#9345a7", "#5d5633"]
@@ -244,6 +248,7 @@
 
 		body.append("h2").text("Análisis");
 		body.append("p").html("En primer lugar es posible establecer cronológicamente cuándo comenzaron a operar las estaciones de medición del ICA en Santiado de Cali; las dos primeras estaciones fueron <i>ERA - Obrero</i> y <i>La Flora</i> que comenzaron a operar en 2010, seguidas por <i>Pance</i>, <i>Univalle</i>, <i>Base Aérea</i>, <i>La Ermita</i> en 2013, <i>Compartir</i> y <i>Cañaveralejo</i> en 2014 y <i>Transitoria</i> en 2015.");
+		body.append("p").html("El aumento de ICA amarillo parece estar relacionado con la puesta en marcha de las estaciones de medición implementadas desde 2013 lo que puede indicar que las primeras estaciones de medición por sí solas no permiten establecer un panorama real del estado de la calidad del aire.");
 		body.append("p").html("También es posible establecer que hay tres puntos en la ciudad con un aumento significativo en el ICA en los últimos años y son <i>ERA - Obrero</i>, <i>Univalle</i> y <i>Base Aérea</i>. De estas estaciones de medición puede ser lógico el aumento en la Base Aérea Marco Fidel Suárez debido a la operación de diferentes vehículos militares tanto aéreos como terrestres.");
 		body.append("p").html("Por otro lado, se puede establecer que en las locaciones de <i>La Flora</i>, <i>Pance</i> y <i>Cañaveralejo</i> las mediciones del ICA son muy buenas.");
 		body.append("p").html("En general en la ciudad de Santiago de Cali el ICA muestra un comportamiento ascendente aunque por el momento se mantiene en los rangos bueno y aceptable. De continuar con esta tendencia es posible que en unos años se hagan necesarias medidas de control para mantener el ICA dentro de los límites saludables para las personas, pero por lo pronto, los caleños puden respirar tranquilos.");
